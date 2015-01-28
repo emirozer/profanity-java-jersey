@@ -96,6 +96,7 @@ public class Filter {
         Charset charset = Charset.forName("ISO-8859-1");
         String line;
         String temp = "";
+        String leet_temp = "";
 
         if (langToBeFound.equals("")){
 
@@ -112,11 +113,21 @@ public class Filter {
 
                     try (BufferedReader reader = Files.newBufferedReader(path_to_specific, charset)) {
                         while ((line = reader.readLine()) != null ) {
+
                             if(line.equals(inputToBeFiltered)){
                                 for(int x=0; x< inputToBeFiltered.length();x++){
                                         temp += "*";
                                      }
                             return temp;
+                            } else{
+
+                                leet_temp = leetReplace(line);
+                                if(leet_temp.equals(inputToBeFiltered)){
+                                    for(int x=0; x< inputToBeFiltered.length();x++){
+                                        temp += "*";
+                                    }
+                                    return temp;
+                                }
                             }
                         }
                     } catch (IOException e) {
@@ -125,7 +136,7 @@ public class Filter {
                 }
 
             } else {
-                logger.severe("Curse word dictionary files cannot be found! PLEASE TAKE ACTION!");
+                logger.severe("Curse word dictionary files cannot be found! You forgot to init git submodule");
             }
 
         }else{
@@ -136,10 +147,19 @@ public class Filter {
                     if(line.equals(inputToBeFiltered)){
 
                         for(int x=0; x< inputToBeFiltered.length();x++){
-                        temp += "*";
+                            temp += "*";
 
-                    }
+                        }
                         return temp;
+                    } else{
+
+                        leet_temp = leetReplace(line);
+                        if(leet_temp.equals(inputToBeFiltered)){
+                            for(int x=0; x< inputToBeFiltered.length();x++){
+                                temp += "*";
+                            }
+                            return temp;
+                        }
                     }
                 }
             } catch (IOException e) {
@@ -147,8 +167,32 @@ public class Filter {
             }
         }
 
-
         return inputToBeFiltered;
+    }
+    public String leetReplace(String inputToBeReplaced){
+        final Logger logger = Logger.getLogger(Filter.class.getName());
+
+        if (inputToBeReplaced.contains("a")){
+            inputToBeReplaced = inputToBeReplaced.replace("a", "4");
+        }
+        if (inputToBeReplaced.contains("e")){
+            inputToBeReplaced = inputToBeReplaced.replace("e", "3");
+        }
+        if (inputToBeReplaced.contains("g")){
+            inputToBeReplaced = inputToBeReplaced.replace("g", "9");
+        }
+        if (inputToBeReplaced.contains("o")){
+            inputToBeReplaced = inputToBeReplaced.replace("o", "0");
+        }
+        if (inputToBeReplaced.contains("y")){
+            inputToBeReplaced = inputToBeReplaced.replace("y", "¥");
+        }
+        if (inputToBeReplaced.contains("i")){
+            inputToBeReplaced = inputToBeReplaced.replace("i", "1");
+        }
+        logger.warning("Original input replaced with l33t speak --> " + inputToBeReplaced);
+        return inputToBeReplaced;
+
     }
 
 }

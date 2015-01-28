@@ -81,4 +81,16 @@ public class FilterTest {
         String responseMsg = target.path("filter").queryParam("input", "shit emir hehehe asshole").queryParam("lang", "en").request().get(String.class);
         assertEquals("**** emir hehehe *******", responseMsg);
     }
+
+    @Test
+    public void testFilterItMultipleCursesInLongSentenceLeetVersion() {
+        String responseMsg = target.path("filter").queryParam("input", "sh1t emir hehehe 4ssh0l3").queryParam("lang", "en").request().get(String.class);
+        assertEquals("**** emir hehehe *******", responseMsg);
+    }
+
+    @Test
+    public void testFilterItOneWordNegativeLeetVersion() {
+        String responseMsg = target.path("filter").queryParam("input", "sh1t").queryParam("lang", "en").request().get(String.class);
+        assertEquals("****", responseMsg);
+    }
 }
