@@ -1,0 +1,15 @@
+language: java
+
+before_script:
+    - git submodule init
+    - git submodule update
+
+script:
+  - mvn clean test
+            
+notifications:
+  email: false
+
+branches:
+  only:
+    - master
