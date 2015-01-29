@@ -120,9 +120,12 @@ public class Filter {
                                      }
                             return temp;
                             } else{
-
                                 leet_temp = leetReplace(line);
+
                                 if(leet_temp.equals(inputToBeFiltered)){
+
+                                    logger.warning("Original input matched with l33t speak --> " + leet_temp);
+                                    
                                     for(int x=0; x< inputToBeFiltered.length();x++){
                                         temp += "*";
                                     }
@@ -152,9 +155,12 @@ public class Filter {
                         }
                         return temp;
                     } else{
-
                         leet_temp = leetReplace(line);
+
                         if(leet_temp.equals(inputToBeFiltered)){
+
+                            logger.warning("Original input matched with l33t speak --> " + leet_temp);
+
                             for(int x=0; x< inputToBeFiltered.length();x++){
                                 temp += "*";
                             }
@@ -170,7 +176,6 @@ public class Filter {
         return inputToBeFiltered;
     }
     public String leetReplace(String inputToBeReplaced){
-        final Logger logger = Logger.getLogger(Filter.class.getName());
 
         if (inputToBeReplaced.contains("a")){
             inputToBeReplaced = inputToBeReplaced.replace("a", "4");
@@ -190,7 +195,7 @@ public class Filter {
         if (inputToBeReplaced.contains("i")){
             inputToBeReplaced = inputToBeReplaced.replace("i", "1");
         }
-        logger.warning("Original input replaced with l33t speak --> " + inputToBeReplaced);
+
         return inputToBeReplaced;
 
     }
