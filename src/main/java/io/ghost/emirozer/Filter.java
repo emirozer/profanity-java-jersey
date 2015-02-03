@@ -35,9 +35,9 @@ public class Filter {
         langArray = new String[]{"cs", "da", "de", "en", "eo", "es", "fi", "fr", "hu", "it",
                 "ja", "ko", "nl", "no", "pl", "pt", "ru", "sv", "th", "tlh", "tr", "zh"};
 
-        String final_result = "";
+        String finalResult = "";
         String filtered = "";
-        String[] list_splitted = toBeFiltered.split(" ");
+        String[] listSplitted = toBeFiltered.split(" ");
 
         if (toBeFiltered.equals("")){
 
@@ -53,23 +53,23 @@ public class Filter {
 
             logger.warning("Did not received query param : lang ---> defaults to \"en\" ");
 
-            for (int i=0; i < list_splitted.length; i++) {
-                filtered = filteringProcessor("", list_splitted[i]);
+            for (int i=0; i < listSplitted.length; i++) {
+                filtered = filteringProcessor("", listSplitted[i]);
 
-                list_splitted[i] = filtered;
+                listSplitted[i] = filtered;
             }
         }else {
             logger.warning("Received query param : lang ---> " + lang);
 
             for(String lang_code : langArray){
                 if (lang_code.equals(lang)) {
-                for (int i=0; i < list_splitted.length; i++){
+                for (int i=0; i < listSplitted.length; i++){
                     // Check if the lang query param matches any lang_code in langArray
 
                         // check for that specific file
-                        filtered = filteringProcessor(lang, list_splitted[i]);
+                        filtered = filteringProcessor(lang, listSplitted[i]);
 
-                        list_splitted[i] = filtered;
+                        listSplitted[i] = filtered;
 
                     }
                 }
@@ -78,12 +78,12 @@ public class Filter {
         }
 
 
-        for(String sp : list_splitted){
-            final_result += sp + " ";
+        for(String sp : listSplitted){
+            finalResult += sp + " ";
         }
-        final_result = final_result.substring(0, final_result.length() - 1);
-        logger.warning(final_result);
-        return final_result;
+        finalResult = finalResult.substring(0, finalResult.length() - 1);
+        logger.warning(finalResult);
+        return finalResult;
     }
 
     public String filteringProcessor(String langToBeFound, String inputToBeFiltered){
