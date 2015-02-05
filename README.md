@@ -30,7 +30,9 @@ You will be able to reach the profanity server & functionality through:
 **Sample Query**:
 
     localhost:8080/pjj/filter/?input=emir is an asshole sometimes&lang=en
-    localhost:8080/pjj/filter/?input=emir is an 4ssh0l3 sometimes&lang=en
+    response -->  "emir is an ******* sometimes"
 
+    localhost:8080/pjj/filter/?input=emir is an 4ssh0l3 sometimes&lang=en
+    response -->  "emir is an ******* sometimes"
 
 *If you are unsure of the lang send an empty string; ""*
