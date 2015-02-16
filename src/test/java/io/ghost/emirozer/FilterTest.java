@@ -88,9 +88,36 @@ public class FilterTest {
         assertEquals("**** emir hehehe *******", responseMsg);
     }
 
-    @Test
-    public void testFilterItOneWordNegativeLeetVersion() {
-        String responseMsg = target.path("filter").queryParam("input", "sh1t").queryParam("lang", "en").request().get(String.class);
-        assertEquals("****", responseMsg);
-    }
+	@Test
+	public void testFilterItOneWordNegativeLeetVersion() {
+		String responseMsg = target.path("filter").queryParam("input", "sh1t").queryParam("lang", "en").request().get(String.class);
+		assertEquals("****", responseMsg);
+	}
+
+	@Test
+	public void testFilterItOneWordDiffLanguage() {
+		String responseMsg = target.path("filter").queryParam("input", "caralho").queryParam("lang", "pt").request().get(String.class);
+		assertEquals("*******", responseMsg);
+	}
+
+	@Test
+	public void testFilterItOneWordDiffLanguageWithoutLangParam() {
+		String responseMsg = target.path("filter").queryParam("input", "caralho").queryParam("lang", "").request().get(String.class);
+		assertEquals("*******", responseMsg);
+	}
+
+	@Test
+	public void testFilterItOneWordDiffLanguageTR() {
+		String responseMsg = target.path("filter").queryParam("input", "siktir").queryParam("lang", "tr").request().get(String.class);
+		assertEquals("******", responseMsg);
+	}
+
+	@Test
+	public void testFilterItOneWordDiffLanguageWithoutLangParamTR() {
+		String responseMsg = target.path("filter").queryParam("input", "siktir").queryParam("lang", "").request().get(String.class);
+		assertEquals("******", responseMsg);
+	}
+
+
+
 }
