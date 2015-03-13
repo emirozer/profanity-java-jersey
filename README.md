@@ -1,7 +1,7 @@
 ![Screenshot](https://raw.github.com/emirozer/profanity-java-jersey/master/docs/pjj.png)
 
 
-##USAGE - [WIP]
+##USAGE
 ######**CI Status** : ![travis](https://travis-ci.org/emirozer/profanity-java-jersey.svg?branch=master)
 
 
