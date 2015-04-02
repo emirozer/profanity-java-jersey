@@ -36,3 +36,7 @@ You will be able to reach the profanity server & functionality through:
     response -->  "emir is an ******* sometimes"
 
 *If you are unsure of the lang send an empty string; ""*
+*Supported languages:*
+	
+	{"cs", "da", "de", "en", "eo", "es", "fi", "fr", "hu", "it",
+                "ja", "ko", "nl", "no", "pl", "pt", "ru", "sv", "th", "tlh", "tr", "zh"}
